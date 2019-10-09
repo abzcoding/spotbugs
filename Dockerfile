@@ -7,14 +7,6 @@ RUN cd /opt \
       && unzip spotbugs.zip \
       && rm -f spotbugs.zip \
       && mv spotbugs-${SPOTBUGS_VERSION} spotbugs \
-      && wget -nc -O findsecbugs-plugin-1.9.0.jar https://repo1.maven.org/maven2/com/h3xstream/findsecbugs/findsecbugs-plugin/1.9.0/findsecbugs-plugin-1.9.0.jar \
+      && wget -nc -O findsecbugs-plugin-1.9.0.jar https://repo1.maven.org/maven2/com/h3xstream/findsecbugs/findsecbugs-plugin/1.9.0/findsecbugs-plugin-1.9.0.jar
 
-CMD ["java",                                       \
-     "-jar",                                       \
-     "/opt/spotbugs/lib/spotbugs.jar",             \
-     "-textui",                                    \
-     "-xml",                                       \
-     "-exitcode",                                  \
-     "-pluginList",                                \
-     "/opt/findsecbugs-plugin-1.9.0.jar",          \
-     "/opt/build/"]
+CMD ["java", "-jar", "/opt/spotbugs/lib/spotbugs.jar", "-textui", "-xml", "-exitcode", "-pluginList", "/opt/findsecbugs-plugin-1.9.0.jar", "/opt/build/"]
